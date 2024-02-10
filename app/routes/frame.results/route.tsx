@@ -1,6 +1,19 @@
-import { MetaFunction } from "@remix-run/cloudflare";
+import { LoaderFunctionArgs, MetaFunction, json } from "@remix-run/cloudflare";
 
-export const meta: MetaFunction = () => {
+export const loader = ({ context }: LoaderFunctionArgs) => {
+  const { MY_KV: myKv } = context.env;
+
+  //   const value = await MY_KV.get(key);
+  //   return json({ value });
+
+  console.log(myKv);
+
+  return json({ cato: "", dogo: "" });
+};
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  console.log(data);
+
   return [
     { title: "Very cool app | Remix" },
     {
@@ -22,5 +35,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Frame() {
-  return <div>RESULT</div>;
+  return (
+    <main>
+      <h1>results:</h1>
+    </main>
+  );
 }

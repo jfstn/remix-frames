@@ -6,31 +6,44 @@ import {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Very cool app | Remix" },
+    { title: "Cato 🙀 or Dogo 🐶?" },
     {
       property: "og:title",
-      content: "Very cool app",
+      content: "Cato or Dogo?",
     },
     {
-      name: "description",
-      content: "This app is the best",
+      name: "og:image",
+      content:
+        "https://placehold.co/400/orange/white?text=Cato\nor\nDogo?&font=roboto",
     },
     { name: "fc:frame", content: "vNext" },
-    { name: "fc:frame:button:1", content: "Green" },
-    { name: "fc:frame:button:2", content: "Purple" },
-    { name: "fc:frame:button:3", content: "Red" },
-    { name: "fc:frame:button:4", content: "Blue" },
+    { name: "fc:frame:button:1", content: "Cato " },
+    { name: "fc:frame:button:2", content: "Dogo" },
     {
       name: "fc:frame:image",
       content:
-        "https://images.unsplash.com/photo-1694505971189-b78ded110152?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://placehold.co/400/orange/white?text=Cato\nor\nDogo?&font=roboto",
     },
   ];
 };
 
-export default function Frame() {
-  return <div>TEST</div>;
-}
+// export async function action({ request, context }: ActionFunctionArgs) {
+//   const { MY_KV: myKv } = context.env;
+
+//   if (request.method === "POST") {
+//     const formData = await request.formData();
+//     const value = formData.get("value") as string;
+//     await myKv.put(key, value);
+//     return null;
+//   }
+
+//   if (request.method === "DELETE") {
+//     await myKv.delete(key);
+//     return null;
+//   }
+
+//   throw new Error(`Method not supported: "${request.method}"`);
+// }
 
 export const action = ({ request }: ActionFunctionArgs) => {
   // validate
@@ -39,3 +52,11 @@ export const action = ({ request }: ActionFunctionArgs) => {
 
   return redirect("/frame/results");
 };
+
+export default function Frame() {
+  return (
+    <main>
+      <h1>frame</h1>
+    </main>
+  );
+}
