@@ -7,7 +7,7 @@ import { ContentWrapper } from "~/components/ContentWrapper";
 import { KV_KEYS } from "~/config";
 import { FrameSignaturePacket } from "~/types";
 
-const FRAME_IMAGE = `https://placehold.co/382x200/orange/white?text=Cato%0Aor%0ADogo?&font=roboto.png`;
+const FRAME_IMAGE = `https://placehold.co/382x200/orange/white/png?text=Cato%0Aor%0ADogo?&font=roboto`;
 
 export const meta: MetaFunction = () => {
   return [
