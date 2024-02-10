@@ -20,6 +20,12 @@ export const loader = async ({ context }: LoaderFunctionArgs) => {
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const isOrangeBackground = Number(data?.catoVotes) > Number(data?.dogoVotes);
 
+  const imageContent = `https://placehold.co/400/${
+    isOrangeBackground ? "orange" : "grey"
+  }/white?text=Cato:+${data?.catoVotes}%0A%0ADogo:+${
+    data?.dogoVotes
+  }&font=roboto`;
+
   return [
     { title: "Cato 🙀 or Dogo 🐶?" },
     {
@@ -28,19 +34,17 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     },
     {
       name: "og:image",
-      content: `https://placehold.co/400/${
-        isOrangeBackground ? "orange" : "grey"
-      }/white?text=Cato:+33%0ADogo:+43&font=roboto`,
+      content: imageContent,
     },
     { name: "fc:frame", content: "vNext" },
-    { name: "fc:frame:button:1", content: "I want vote again! 😾🐶" },
+    { name: "fc:frame:button:1", content: "I want to vote again! 😾🐶" },
     {
       name: "fc:frame:image",
-      content: `https://placehold.co/400/${
-        isOrangeBackground ? "orange" : "grey"
-      }/white?text=Cato:+${data?.catoVotes}%0ADogo:+${
-        data?.dogoVotes
-      }&font=roboto`,
+      content: imageContent,
+    },
+    {
+      name: "fc:frame:post_url",
+      content: "https://remix-frames.pages.dev/frame/results",
     },
   ];
 };

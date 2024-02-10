@@ -16,7 +16,7 @@ export const meta: MetaFunction = () => {
     {
       name: "og:image",
       content:
-        "https://placehold.co/400/orange/white?text=Cato\nor\nDogo?&font=roboto",
+        "https://placehold.co/400/orange/white?text=Cato%0Aor%0ADogo?&font=roboto",
     },
     { name: "fc:frame", content: "vNext" },
     { name: "fc:frame:button:1", content: "Cato 😻" },
@@ -24,7 +24,11 @@ export const meta: MetaFunction = () => {
     {
       name: "fc:frame:image",
       content:
-        "https://placehold.co/400/orange/white?text=Cato\nor\nDogo?&font=roboto",
+        "https://placehold.co/400/orange/white?text=Cato%0Aor%0ADogo?&font=roboto",
+    },
+    {
+      name: "fc:frame:post_url",
+      content: "https://remix-frames.pages.dev/frame",
     },
   ];
 };
@@ -36,12 +40,12 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
 
   // Please check https://developers.cloudflare.com/kv/reference/how-kv-works/#consistency
 
-  if (data.untrustedData.buttonIndex === 0) {
+  if (data.untrustedData.buttonIndex === 1) {
     const catoVotes = await myKv.get(KV_KEYS.cato);
     await myKv.put(KV_KEYS.cato, String(catoVotes ? Number(catoVotes) + 1 : 1));
   }
 
-  if (data.untrustedData.buttonIndex === 1) {
+  if (data.untrustedData.buttonIndex === 2) {
     const dogoVotes = await myKv.get(KV_KEYS.dogo);
     await myKv.put(KV_KEYS.dogo, String(dogoVotes ? Number(dogoVotes) + 1 : 1));
   }
