@@ -6,11 +6,6 @@ import {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Cato 🙀 or Dogo 🐶?" },
-    {
-      property: "og:title",
-      content: "Cato or Dogo?",
-    },
     {
       name: "og:image",
       content:
