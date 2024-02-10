@@ -1,4 +1,8 @@
-import { MetaFunction } from "@remix-run/cloudflare";
+import {
+  ActionFunctionArgs,
+  MetaFunction,
+  redirect,
+} from "@remix-run/cloudflare";
 
 export const meta: MetaFunction = () => {
   return [
@@ -27,3 +31,11 @@ export const meta: MetaFunction = () => {
 export default function Frame() {
   return <div>TEST</div>;
 }
+
+export const action = ({ request }: ActionFunctionArgs) => {
+  // validate
+
+  console.log(request);
+
+  return redirect("/frame/results");
+};
