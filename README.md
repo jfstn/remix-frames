@@ -1,36 +1,9 @@
-# Welcome to Remix + Vite!
+# Farcaster Frame Constructed with Remix
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/future/vite) for details on supported features.
+This Farcaster frame is developed using Remix (with Vite) and is prepared for deployment on Cloudflare.
 
-## Development
+To test the frame, visit https://warpcast.com/~/developers/frames and specify the frame URL as https://remix-frames.pages.dev/frame.
 
-Run the Vite dev server:
+For a simple UI, you can also access it at https://remix-frames.pages.dev.
 
-```shellscript
-npm run dev
-```
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
+🚨 If you intend to deploy this repository to your Cloudflare account, establish a KV binding as outlined here: https://remix.run/docs/en/main/future/vite#bindings.
