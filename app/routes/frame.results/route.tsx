@@ -4,7 +4,10 @@ import {
   json,
   redirect,
 } from "@remix-run/cloudflare";
+import { ContentWrapper } from "~/components/ContentWrapper";
 import { KV_KEYS } from "~/config";
+import { buildFrameImageUrl } from "./utils";
+import { useLoaderData } from "@remix-run/react";
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {
   const { MY_KV: myKv } = context.env;
@@ -18,13 +21,7 @@ export const loader = async ({ context }: LoaderFunctionArgs) => {
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  const isOrangeBackground = Number(data?.catoVotes) > Number(data?.dogoVotes);
-
-  const imageContent = `https://placehold.co/400/${
-    isOrangeBackground ? "orange" : "grey"
-  }/white?text=Cato:+${data?.catoVotes}%0A%0ADogo:+${
-    data?.dogoVotes
-  }&font=roboto&${Date.now()}`;
+  const imageUrl = buildFrameImageUrl(data);
 
   return [
     { title: "Cato 🙀 or Dogo 🐶?" },
@@ -34,13 +31,13 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     },
     {
       name: "og:image",
-      content: imageContent,
+      content: imageUrl,
     },
     { name: "fc:frame", content: "vNext" },
-    { name: "fc:frame:button:1", content: "I want to vote again! 😾🐶" },
+    { name: "fc:frame:button:1", content: "🐶 Refreshoo 😼" },
     {
       name: "fc:frame:image",
-      content: imageContent,
+      content: imageUrl,
     },
     {
       name: "fc:frame:post_url",
@@ -50,11 +47,25 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export default function FrameResult() {
+  const data = useLoaderData<typeof loader>();
+
+  const imageUrl = buildFrameImageUrl(data);
+
   return (
-    <main>
-      <h1>results:</h1>
-    </main>
+    <ContentWrapper>
+      <h1>
+        frame <span className="bg-orange-400">results</span> page
+      </h1>
+      <div className="size-[400px]">
+        <img src={imageUrl} alt="" />
+      </div>
+      <div className="flex">
+        <a className="ml-auto hover:underline" href="/">
+          &lt; back
+        </a>
+      </div>
+    </ContentWrapper>
   );
 }
 
-export const action = () => redirect("/frame");
+export const action = () => redirect("/frame/results");

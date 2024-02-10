@@ -17,8 +17,8 @@
     "@remix-run/react": "^2.6.0",
     "isbot": "^4.1.0",
     "miniflare": "^3.20231030.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "18.3.0-canary-388686f29-20230503",
+    "react-dom": "18.3.0-canary-388686f29-20230503"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230518.0",
