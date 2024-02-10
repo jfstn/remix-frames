@@ -10,18 +10,20 @@ export const meta: MetaFunction = () => [
 
 export default function Index() {
   return (
-    <main>
-      <h1>
-        <a
-          href="https://warpcast.com/joaofaustino"
-          target="_blank"
-          rel="noreferrer"
-          className="bg-orange-400"
-        >
-          @joaofaustino&#39;s
-        </a>{" "}
-        remix frame example
-      </h1>
+    <main className="flex size-full">
+      <div className="m-auto">
+        <h1 className="">
+          <a
+            href="https://warpcast.com/joaofaustino"
+            target="_blank"
+            rel="noreferrer"
+            className="bg-orange-400"
+          >
+            @joaofaustino&#39;s
+          </a>{" "}
+          remix frame example
+        </h1>
+      </div>
     </main>
   );
 }

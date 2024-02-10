@@ -3,17 +3,24 @@ import {
   MetaFunction,
   redirect,
 } from "@remix-run/cloudflare";
+import { KV_KEYS } from "~/config";
+import { FrameSignaturePacket } from "~/types";
 
 export const meta: MetaFunction = () => {
   return [
+    { title: "Cato 🙀 or Dogo 🐶?" },
+    {
+      property: "og:title",
+      content: "Cato or Dogo?",
+    },
     {
       name: "og:image",
       content:
         "https://placehold.co/400/orange/white?text=Cato\nor\nDogo?&font=roboto",
     },
     { name: "fc:frame", content: "vNext" },
-    { name: "fc:frame:button:1", content: "Cato " },
-    { name: "fc:frame:button:2", content: "Dogo" },
+    { name: "fc:frame:button:1", content: "Cato 😻" },
+    { name: "fc:frame:button:2", content: "Dogo 🐶" },
     {
       name: "fc:frame:image",
       content:
@@ -22,28 +29,22 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-// export async function action({ request, context }: ActionFunctionArgs) {
-//   const { MY_KV: myKv } = context.env;
+export const action = async ({ request, context }: ActionFunctionArgs) => {
+  const { MY_KV: myKv } = context.env;
 
-//   if (request.method === "POST") {
-//     const formData = await request.formData();
-//     const value = formData.get("value") as string;
-//     await myKv.put(key, value);
-//     return null;
-//   }
+  const data: FrameSignaturePacket = await request.json();
 
-//   if (request.method === "DELETE") {
-//     await myKv.delete(key);
-//     return null;
-//   }
+  // Please check https://developers.cloudflare.com/kv/reference/how-kv-works/#consistency
 
-//   throw new Error(`Method not supported: "${request.method}"`);
-// }
+  if (data.untrustedData.buttonIndex === 0) {
+    const catoVotes = await myKv.get(KV_KEYS.cato);
+    await myKv.put(KV_KEYS.cato, String(catoVotes ? Number(catoVotes) + 1 : 1));
+  }
 
-export const action = ({ request }: ActionFunctionArgs) => {
-  // validate
-
-  console.log(request);
+  if (data.untrustedData.buttonIndex === 1) {
+    const dogoVotes = await myKv.get(KV_KEYS.dogo);
+    await myKv.put(KV_KEYS.dogo, String(dogoVotes ? Number(dogoVotes) + 1 : 1));
+  }
 
   return redirect("/frame/results");
 };
