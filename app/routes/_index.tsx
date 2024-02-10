@@ -34,8 +34,8 @@ export async function action({ request, context }: ActionFunctionArgs) {
 export default function Index() {
   const { value } = useLoaderData<typeof loader>();
   return (
-    <div>
-      <h1>Welcome to Remix</h1>
+    <div className="flex flex-col items-center justify-center bg-red-50">
+      <h1 className="font-serif text-center">Welcome to Remix</h1>
       {value ? (
         <>
           <p>Value: {value}</p>
