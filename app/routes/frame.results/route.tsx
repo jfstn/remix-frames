@@ -24,7 +24,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     isOrangeBackground ? "orange" : "grey"
   }/white?text=Cato:+${data?.catoVotes}%0A%0ADogo:+${
     data?.dogoVotes
-  }&font=roboto`;
+  }&font=roboto&${Date.now()}`;
 
   return [
     { title: "Cato 🙀 or Dogo 🐶?" },
