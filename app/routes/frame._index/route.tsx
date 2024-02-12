@@ -7,7 +7,7 @@ import { ContentWrapper } from "~/components/ContentWrapper";
 import { KV_KEYS } from "~/config";
 import { FrameSignaturePacket } from "~/types";
 
-const FRAME_IMAGE = `https://placehold.co/382x200/orange/white/png?text=Cato%0Aor%0ADogo?&font=roboto`;
+const FRAME_IMAGE = `https://placehold.co/382x382/orange/white/png?text=Cato%0Aor%0ADogo?&font=roboto`;
 
 export const meta: MetaFunction = () => {
   return [
@@ -20,7 +20,7 @@ export const meta: MetaFunction = () => {
       name: "og:image",
       content: FRAME_IMAGE,
     },
-    { name: "fc:frame:image:aspect_ratio", content: "1.91:1" },
+    { name: "fc:frame:image:aspect_ratio", content: "1:1" },
     { name: "fc:frame", content: "vNext" },
     { name: "fc:frame:button:1", content: "Cato 😻" },
     { name: "fc:frame:button:2", content: "Dogo 🐶" },
@@ -61,7 +61,7 @@ export default function Frame() {
       <h1>
         <span className="bg-orange-400">frame</span> page
       </h1>
-      <div className="w-[382px] h-[200px]">
+      <div className="w-[382px] h-[382px]">
         <img src={FRAME_IMAGE} alt="Cato or Dogo?" />
       </div>
       <div className="flex">

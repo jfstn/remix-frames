@@ -33,7 +33,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
       name: "og:image",
       content: imageUrl,
     },
-    { name: "fc:frame:image:aspect_ratio", content: "1.91:1" },
+    { name: "fc:frame:image:aspect_ratio", content: "1:1" },
     { name: "fc:frame", content: "vNext" },
     { name: "fc:frame:button:1", content: "🐶 Refreshoo 😼" },
     {
@@ -57,7 +57,7 @@ export default function FrameResult() {
       <h1>
         frame <span className="bg-orange-400">results</span> page
       </h1>
-      <div className="w-[382px] h-[200px]">
+      <div className="w-[382px] h-[382px]">
         <img src={imageUrl} alt="" />
       </div>
       <div className="flex">
