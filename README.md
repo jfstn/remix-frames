@@ -1,6 +1,8 @@
-# Farcaster Frame Constructed with Remix
+# Farcaster Frames with Remix
 
-This Farcaster frame is developed using Remix (with Vite) and is prepared for deployment on Cloudflare.
+This Farcaster frame implementation is developed using Remix (with Vite) and is prepared for deployment on Cloudflare.
+
+To view the frame visit https://warpcast.com/joaofaustino/0x76ce021a.
 
 To test the frame, visit https://warpcast.com/~/developers/frames and specify the frame URL as https://remix-frames.pages.dev/frame.
 
